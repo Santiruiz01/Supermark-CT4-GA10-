@@ -1,19 +1,27 @@
 package supermark_GA10;
 
+import java.sql.Date;
+
 public class Usuario {
 
 	// Atributos
 	private String nombre;
 	private String apellido;
 	private Integer id;
-	private Domicilio domicilio;
+	private String contrasenia;
+	private String correo;
+	private Integer dni;
+	private Date nacimiento_fecha; 
+	
 
 	// Metodos
-	public Usuario(String nombre, String apellido, Integer id, Domicilio domicilio) {
+	public Usuario(String nombre, String apellido, String contrasenia, String correo, Integer dni, Date fecha) {
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.id = id;
-		this.domicilio = domicilio;	
+		this.contrasenia = contrasenia;
+		this.correo = correo;
+		this.dni = dni;
+		this.nacimiento_fecha = fecha;
 	}
 
 	public String getNombre() {
@@ -40,11 +48,38 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public Domicilio getDomicilio() {
-		return domicilio;
+	public String getContrasenia() {
+		return contrasenia;
 	}
 
-	public void setDomicilio(Domicilio domicilio) {
-		this.domicilio = domicilio;
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
 	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public Integer getDni() {
+		return dni;
+	}
+
+	public void setDni(Integer dni) {
+		this.dni = dni;
+	}
+
+	public Date getNacimiento_fecha() {
+		return nacimiento_fecha;
+	}
+
+	public void setNacimiento_fecha(Date fecha) {
+		this.nacimiento_fecha = fecha;
+	}
+	
+	
+	
 }
