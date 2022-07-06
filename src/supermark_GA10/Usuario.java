@@ -15,7 +15,8 @@ public class Usuario {
 	
 
 	// Metodos
-	public Usuario(String nombre, String apellido, String contrasenia, String correo, Integer dni, Date fecha) {
+	public Usuario(Integer id, String nombre, String apellido, String contrasenia, String correo, Integer dni, Date fecha) {
+		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.contrasenia = contrasenia;
@@ -79,7 +80,7 @@ public class Usuario {
 	public void setNacimiento_fecha(Date fecha) {
 		this.nacimiento_fecha = fecha;
 	}
-	
+	 
 	
 	
 }

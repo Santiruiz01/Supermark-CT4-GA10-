@@ -11,7 +11,7 @@ public class ConexionMSQL {
 	// DEFINIR LAS CONSTANTES PARA LA CONEXION DE LA BASE DE DATOS:
 
 	static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-	static String DB_URL = "jdbc:mysql://localhost:3306/";
+	static String DB_URL = "jdbc:mysql://localhost:3306/supermark_ct4_ga10";
 
 	// DEFINIR LAS CREDENCIALES DE LA BASE DE DATOS:
 
@@ -20,42 +20,47 @@ public class ConexionMSQL {
 
 	private Connection connection = null;
 	private Statement stmt = null; // ------> OBJETO PARA REALIZAR LAS PETICIONES EN SQL
-	private ResultSet rs = null; // ------> CONJUNTO DE RESULTADOS
-
-	public ConexionMSQL(String db) {
-		this.DB_URL += db;
-	}
-
-	public void conectar() {
+	private ResultSet rs = null; // ------> CONJUNTO DE RESULTADOs
+	
+	public void conectar () { 
 		try {
-			Class.forName(JDBC_DRIVER); // INSTANCIAR EL DRIVER
-
 			System.out.println("CONECTANDO A LA BASE DE DATOS...");
-			connection = DriverManager.getConnection(DB_URL, USER, PASS); // PARA CONECTARSE A LA BDD
-
-			System.out.println("CREANDO SENTENCIAS SQL...");
-			stmt = connection.createStatement(); // VAMOS A CREAR UNA SENTENCIA EN SQL
-
-		} catch (ClassNotFoundException e) {
+			connection = DriverManager.getConnection(DB_URL, USER, PASS);
+		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+	
+	String sql;
+	
+	public void registro(Usuario usuario) {
+		this.sql = "INSERT INTO usuario " + 
+	"(id,nombre,apellido,contraseña,correo,dni,nacimiento_fecha)" + 
+	"VALUE ( " +
+	usuario.getId() + " ,' " +
+	usuario.getNombre() + " ','" + 
+	usuario.getApellido() + " ',' " +
+	usuario.getContrasenia() + " ',' " +
+	usuario.getCorreo() + " ', " +
+	usuario.getDni() + " ,' " +
+	usuario.getNacimiento_fecha() +" ')";
+		
+		try {
+			System.out.println("CREANDO SENTENCIAS SQL");
+			stmt = connection.createStatement();
+			stmt.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			try { // ACA CERRAMOS LOS PUENTES QUE CREAMOS AL PRINCIPIO
-				rs.close();
-				stmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
-
+		}
+	public void close () {
+		try {
+			//rs.close();
+			stmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
-	
-
-	public Statement getStmt() {
-		return stmt;
-	}
-
-	
-}
+		
+		}

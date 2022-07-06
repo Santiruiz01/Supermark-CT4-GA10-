@@ -8,7 +8,7 @@ public class Registro {
 
 	public static void main(String[] args) throws IOException {
 		
-		CRUDusuario crud = new CRUDusuario();
+		ConexionMSQL conn = new ConexionMSQL ();
 		/*
 		 * Scanner tc = new Scanner(System.in);
 		 * 
@@ -32,13 +32,17 @@ public class Registro {
 		 * System.out.println("Anio: ");byte anio = tc.nextByte(); anio = (byte) (anio -
 		 * 1900);
 		 */
+		
+		conn.conectar();
 
 		Date fecha = new Date(101, 8, 28);
 
-		Usuario user = new Usuario("Santiago", "Ruiz", "ybn3421", "santiruiz2001@outlook.com", 43640893, fecha);{
-
-		}
-		crud.registro(user);
+		Usuario user = new Usuario(1 ,"Santiago", "Ruiz", "ybn3421", "santiruiz2001@outlook.com", 43640893, fecha);
+		
+		conn.registro(user);
+		
+		conn.close();
+		
 	}
 
 }
