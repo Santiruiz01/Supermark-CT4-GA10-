@@ -1,10 +1,10 @@
 package supermark_GA10;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+	import java.sql.Connection;
+	import java.sql.DriverManager;
+	import java.sql.ResultSet;
+	import java.sql.SQLException;
+	import java.sql.Statement;
 
 public class ConexionMSQL {
 
@@ -25,6 +25,30 @@ public class ConexionMSQL {
 	public ConexionMSQL(String db) {
 		this.DB_URL += db;
 	}
+	
+	public Statement getStmt() {
+		return stmt;
+	}
+	
+	public Connection getConnection() {
+		return connection;
+	}
+
+	public ResultSet getRs() {
+		return rs;
+	}
+	
+	public void setConnection(Connection connection) {
+		this.connection = connection;
+	}
+
+	public void setStmt(Statement stmt) {
+		this.stmt = stmt;
+	}
+
+	public void setRs(ResultSet rs) {
+		this.rs = rs;
+	}
 
 	public void conectar() {
 		try {
@@ -40,22 +64,16 @@ public class ConexionMSQL {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			try { // ACA CERRAMOS LOS PUENTES QUE CREAMOS AL PRINCIPIO
+		} /*finally {
+			try {
 				rs.close();
 				stmt.close();
 				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}
+			}*/
 		}
 
 	}
 	
 
-	public Statement getStmt() {
-		return stmt;
-	}
-
-	
-}

@@ -6,33 +6,28 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
-	public class CRUDusuario {
-		
-		
-		
+public class CRUDdomicilio {
+	
 	private ConexionMSQL conexion;
 	private String sql;
-
-	public CRUDusuario() {
+	
+	public CRUDdomicilio () {
 		super();
 		this.conexion = new ConexionMSQL("supermark_ct4_ga10");
 		this.conexion.conectar();
 		this.sql = "";
 		
 	}
-
-	public void registro(Usuario usuario) {
-		this.sql = "INSERT INTO usuario " + 
-				"(id,nombre,apellido,contraseña,correo,dni,nacimiento_fecha)" + 
+	
+	public void registro(Domicilio domUsuario) {
+		this.sql = "INSERT INTO domicilio " + 
+				"(id,calle,altura,piso,deptoNum)" + 
 				"VALUE ( " +
-				usuario.getId() + " ,' " +
-				usuario.getNombre() + " ','" + 
-				usuario.getApellido() + " ',' " +
-				usuario.getContrasenia() + " ',' " +
-				usuario.getCorreo() + " ', " +
-				usuario.getDni() + " ,' " +
-				usuario.getNacimiento_fecha() +" ')";
+				domUsuario.getId() + ", '" +
+				domUsuario.getCalle() + "' , " +
+				domUsuario.getAltura() + " , " +
+				domUsuario.getPiso() + " , " +
+				domUsuario.getDeptoNum() + ")";
 	
 		try {
 			conexion.getStmt().executeUpdate(sql);
@@ -44,6 +39,5 @@ import java.sql.Statement;
 	
 
 }
-}	
 
-	
+}

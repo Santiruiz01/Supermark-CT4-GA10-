@@ -1,41 +1,22 @@
 package supermark_GA10;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Date;
-import java.util.Scanner;
 
 public class Registro {
 
 	public static void main(String[] args) throws IOException {
 		
 		CRUDusuario crud = new CRUDusuario();
-		/*
-		 * Scanner tc = new Scanner(System.in);
-		 * 
-		 * 
-		 * 
-		 * System.out.println("INGRESE SU NOMBRE:"); String nombre = tc.next();
-		 * 
-		 * System.out.println("INGRESE SU APELLIDO:"); String apellido = tc.next();
-		 * 
-		 * System.out.println("INGRESAR UNA CONTRASEÑA:"); String contrasenia =
-		 * tc.next();
-		 * 
-		 * System.out.println("INGRESE SU CORREO:"); String correo = tc.next();
-		 * 
-		 * System.out.println("INGRESE SU DNI:"); Integer dni = tc.nextInt();
-		 * 
-		 * System.out.println("INGRESE SU FECHA DE NACIMIENTO");
-		 * 
-		 * System.out.println("Dia: "); byte dia = tc.nextByte();
-		 * System.out.println("Mes: "); byte mes = tc.nextByte();
-		 * System.out.println("Anio: ");byte anio = tc.nextByte(); anio = (byte) (anio -
-		 * 1900);
-		 */
 
-		Date fecha = new Date(101, 8, 28);
+		Date fecha = new Date(87, 5, 24);
 
-		Usuario user = new Usuario("Santiago", "Ruiz", "ybn3421", "santiruiz2001@outlook.com", 43640893, fecha);{
+		Usuario user = new Usuario(2,"Lionel", "Messi", "lam1010", "lionelmessi@outlook.com", 33016244, fecha);{
 
 		}
 		crud.registro(user);
